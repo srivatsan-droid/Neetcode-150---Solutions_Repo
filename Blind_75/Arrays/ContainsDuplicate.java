@@ -1,5 +1,8 @@
 package Blind_75.Arrays;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class ContainsDuplicate {
     public static boolean isDuplicateBrute(int nums[]) {
         for (int i = 0; i < nums.length; i++) {
@@ -12,9 +15,20 @@ public class ContainsDuplicate {
         return false;
     }
 
+    public static boolean isDuplicateOptimized(int nums[]) {
+        Set<Integer> set = new HashSet<>();
+        for (int num : nums) {
+            if (set.contains(num)) {
+                return true;
+            }
+            set.add(num);
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         int nums[] = { 1, 2, 3, 4 };
-        boolean ans = isDuplicateBrute(nums);
+        boolean ans = isDuplicateOptimized(nums);
         System.out.println(ans);
     }
 }
